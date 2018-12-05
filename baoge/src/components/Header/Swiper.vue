@@ -17,15 +17,16 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
+        loop: true,
+        autoplay: 1000
       },
       swiperList: [{
         id: '01',
-        imgUrl: '//dimg04.c-ctrip.com/images/700l0y000000lvexk72B5_1242_248_25.jpg'
+        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1809/31/da037478f37cf202.jpg_750x200_a02cf862.jpg'
       },
       {
         id: '02',
-        imgUrl: '//dimg04.c-ctrip.com/images/70060y000000lvlou6C83_1242_248_25.jpg'
+        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1809/c6/2467595fffc3b302.jpg_750x200_cca13d51.jpg'
       }]
     }
   }
@@ -38,7 +39,7 @@ export default {
       width 100%
       height 0
       overflow hidden
-      padding-bottom 20%
+      padding-bottom 26.6666%
       background #ccc
       .swiper-img
         width 100%
