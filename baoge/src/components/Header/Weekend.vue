@@ -2,13 +2,13 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for='item of recommendList' :key='item.id'>
+      <li class="item border-bottom" v-for='item of list' :key='item.id'>
         <div class="item-img-wrapper">
-          <img class="item-img" :src="item.imgUrl" alt="">
+          <img class="item-img" :src="item.imgsrc" alt="">
         </div>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
-          <p class="item-desc">{{item.desc}}</p>
+          <p class="item-desc">{{item.imginfor}}</p>
         </div>
       </li>
     </ul>
@@ -18,24 +18,11 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommendList: [{
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }, {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }, {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }]
     }
   }
 }
@@ -44,7 +31,6 @@ export default {
 <style lang="stylus" scoped>
 @import '~css/mixins.styl'
 .title
-  margin-top .2rem
   line-height .8rem
   background #eee
   text-indent .2rem

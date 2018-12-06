@@ -2,11 +2,11 @@
   <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for='item of recommendList' :key='item.id'>
-        <img class="item-img" :src="item.imgUrl" alt="">
+      <li class="item border-bottom" v-for='item of list' :key='item.id'>
+        <img class="item-img" :src="item.imgsrc" alt="">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
-          <p class="item-desc">{{item.desc}}</p>
+          <p class="item-desc">{{item.imginfor}}</p>
           <button class="item-button">查看详情</button>
         </div>
       </li>
@@ -17,24 +17,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommendList: [{
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1810/4c/4c3e7f52ffd973b0a3.water.jpg_200x200_65b5a07f.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }, {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1810/4c/4c3e7f52ffd973b0a3.water.jpg_200x200_65b5a07f.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }, {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1810/4c/4c3e7f52ffd973b0a3.water.jpg_200x200_65b5a07f.jpg',
-        title: '世界之窗',
-        desc: '深圳世界之窗成人票(夜场)(万圣节特惠10.12-10.26【不限人群】)'
-      }]
     }
   }
 }
@@ -43,7 +30,6 @@ export default {
 <style lang="stylus" scoped>
 @import '~css/mixins.styl'
 .recommend-title
-  margin-top .2rem
   line-height .8rem
   background #eee
   text-indent .2rem

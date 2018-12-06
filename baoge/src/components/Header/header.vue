@@ -4,13 +4,16 @@
       <div class="iconfont back-icon">&#xe60a;</div>
     </div>
     <div class="header-input"><span class="iconfont">&#xe61e;</span>输入城市/景点/游玩主题</div>
-    <div class="header-right">城市<span class="iconfont arrow-icon">&#xe72e;</span></div>
+    <div class="header-right">{{this.city}}<span class="iconfont arrow-icon">&#xe72e;</span></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Homeheader'
+  name: 'Homeheader',
+  props: {
+    city: String
+  }
 }
 </script>
 <!-- 样式使用stylus，必须增加lang="stylus" -->

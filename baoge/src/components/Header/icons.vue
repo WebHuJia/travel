@@ -1,12 +1,12 @@
 <template>
-  <div class="icons">
+  <div class="icons border-bottom">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.imgUrl" alt="">
+            <img class="icon-img-content" :src="item.src" alt="">
           </div>
-          <p class="icon-desc">{{item.desc}}</p>
+          <p class="icon-desc">{{item.title}}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -15,48 +15,13 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      iconList: [{
-        id: '001',
-        imgUrl: require('../../assets/img/icons_01.png'),
-        desc: '景点门票'
-      }, {
-        id: '002',
-        imgUrl: require('../../assets/img/icons_02.png'),
-        desc: '滑雪季'
-      }, {
-        id: '003',
-        imgUrl: require('../../assets/img/icons_03.png'),
-        desc: '泡温泉'
-      }, {
-        id: '004',
-        imgUrl: require('../../assets/img/icons_04.png'),
-        desc: '动物植园'
-      }, {
-        id: '005',
-        imgUrl: require('../../assets/img/icons_05.png'),
-        desc: '景点门票'
-      }, {
-        id: '006',
-        imgUrl: require('../../assets/img/icons_06.png'),
-        desc: '滑雪季'
-      }, {
-        id: '007',
-        imgUrl: require('../../assets/img/icons_07.png'),
-        desc: '泡温泉'
-      }, {
-        id: '008',
-        imgUrl: require('../../assets/img/icons_08.png'),
-        desc: '动物植园'
-      }, {
-        id: '009',
-        imgUrl: require('../../assets/img/icons_01.png'),
-        desc: '一日游'
-      }],
       swiperOption: {
-        autoplay: 0,
-        pagenation: '.swiper-pagination'
+        autoplay: false
       }
     }
   },
@@ -64,7 +29,7 @@ export default {
   // 计算图标个数，分配页数
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
