@@ -9,26 +9,26 @@
 第一步：路由拦截
 首先在定义路由的时候就需要多添加一个自定义字段requireAuth，用于判断该路由的访问是否需要登录。如果用户已经登录，则顺利进入路由，
 否则就进入登录页面。
-const routes = [
-    {
-        path: '/',
-        name: '/',
-        component: Index
-    },
-    {
-        path: '/repository',
-        name: 'repository',
-        meta: {
-            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
-        },
-        component: Repository
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login
-    }
-];
+         const routes = [
+             {
+                 path: '/',
+                 name: '/',
+                 component: Index
+             },
+             {
+                 path: '/repository',
+                 name: 'repository',
+                 meta: {
+                     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+                 },
+                 component: Repository
+             },
+             {
+                 path: '/login',
+                 name: 'login',
+                 component: Login
+             }
+         ];
 定义完路由后，我们主要是利用vue-router提供的钩子函数beforeEach()对路由进行判断。
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
