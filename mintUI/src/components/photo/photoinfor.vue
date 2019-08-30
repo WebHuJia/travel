@@ -34,7 +34,7 @@ export default {
     comment
   },
   created () {
-    // this.getlist()
+    console.log(this.$route.meta.keepAlive)
   },
   methods: {
     getlist () {

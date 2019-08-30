@@ -75,6 +75,7 @@ export default {
   },
   created () {
     this.All()
+    window.scrollTo(0, 0) // 进入页面回滚到顶部
   },
   mounted () {
     mui('.mui-scroll-wrapper').scroll({

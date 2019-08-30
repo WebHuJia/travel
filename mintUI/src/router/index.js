@@ -17,6 +17,7 @@ Vue.use(Router)
 
 export default new Router({
   linkActiveClass: 'mui-active',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -25,47 +26,76 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: home
+      component: home,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/member',
       name: 'member',
-      component: member
+      component: member,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/shopcar',
       name: 'shopcar',
-      component: shopcar
+      component: shopcar,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/search',
       name: 'search',
-      component: search
+      component: search,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/home/newlist',
       name: 'newlist',
-      component: newslist
+      component: newslist,
+      meta: {
+        requireAuth: true, // 添加该字段，表示进入这个路由是需要登录
+        keepAlive: true // 添加该字段，表示进入这个路由状态是缓存的
+      }
     },
     {
       path: '/home/newlist/newsinfor',
       name: 'newsinfor',
-      component: newsinfor
+      component: newsinfor,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/home/photolist',
       name: 'photolist',
-      component: photolist
+      component: photolist,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/home/photolist/photoinfor',
       name: 'photoinfor',
-      component: photoinfor
+      component: photoinfor,
+      meta: {
+        requireAuth: true,
+        keepAlive: true
+      }
     },
     {
       path: '/home/textlist',
       name: 'textlist',
-      component: textlist
+      component: textlist,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/home/textlist/textimg/:id',

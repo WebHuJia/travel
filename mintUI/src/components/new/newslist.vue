@@ -11,6 +11,8 @@
         </router-link>
       </li>
     </ul>
+     <mt-button type="primary" @click="get">GET请求</mt-button>
+     <mt-button type="primary" @click="post">POST请求</mt-button>
   </div>
 </template>
 
@@ -38,6 +40,44 @@ export default {
           data: Date() + 3
         }
       ]
+    }
+  },
+  created () {
+    console.log(this.$route.meta.keepAlive)
+    console.log(this.$route)
+  },
+  methods: {
+    get () {
+      this.$http.get('/app.js', {
+        params: {
+          app_id: '123456',
+          token: 'abcd'
+        },
+        headers: {
+          token: 'abcd'
+        }
+      }).then(res => {
+        console.log(res)
+      }, response => {
+        // error callback
+      })
+    },
+    post () {
+      this.$http.post('/app.js', {
+        ueserid: '102'
+      }, {
+        params: {
+          app_id: '123456',
+          token: 'abcd'
+        },
+        headers: {
+          token: 'abcd'
+        }
+      }).then(res => {
+        console.log(res)
+      }, response => {
+        // error callback
+      })
     }
   }
 }

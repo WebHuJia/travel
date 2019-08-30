@@ -39,3 +39,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     },
 ],
 ```
+# 用了vue懒加载打包后直接运行index.html会报错，报文件引用错误，其实是打包时候路径配置有点问题修复如下：
+    在 build 目录下的 webpack.prod.conf.js 添加  publicPath: '/'

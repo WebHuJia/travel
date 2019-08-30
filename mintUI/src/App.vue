@@ -8,9 +8,12 @@
     </mt-header>
     <!-- 组件 view-roter 区域 -->
     <div class="contain">
-      <transition mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <!-- keep-live 是vue提供的一个抽象组件，能在组件切换过程中，将状态保持在内存中，防止重复渲染DOM -->
+      <keep-alive>
+        <transition mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </keep-alive>
     </div>
     <!-- tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
@@ -64,6 +67,11 @@ export default {
       } else {
         this.flag = true
       }
+    },
+    // 监听路由变化, 每次切换页面，让页面都固定到顶部
+    '$route': function (to, from) {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
     }
   }
 }
@@ -75,7 +83,7 @@ export default {
   padding-top: 40px;
   padding-bottom: 50px;
   $color: red;
-  .contain{
+  .contain {
     overflow-x: hidden;
   }
   h1 {
@@ -98,30 +106,30 @@ export default {
   transition: all 0.3s;
 }
 .mui-bar-tab .mui-tab-item1 {
-    display: table-cell;
-    overflow: hidden;
-    width: 1%;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #929292;
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
 }
 .mui-bar-tab .mui-tab-item1.mui-active {
-    color: #007aff;
+  color: #007aff;
 }
 .mui-bar-tab .mui-tab-item1 .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.mui-bar-tab .mui-tab-item1 .mui-icon~.mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.mui-bar-tab .mui-tab-item1 .mui-icon ~ .mui-tab-label {
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

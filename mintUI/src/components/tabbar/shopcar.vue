@@ -16,6 +16,10 @@
       </li>
     </ul>
     {{$store.getters.getSelected}}
+    <br>
+    {{$store.getters.getAllCount}}
+    <br>
+    {{$store.getters.getCount}}
   </div>
 </template>
 

@@ -4,6 +4,7 @@
 
 import Vue from 'vue'
 import App from './App'
+import store from './store/index' // 引入 store 状态管理仓库
 import router from './router/index.js'
 // 按需引入mint-ui部分组件
 import { Header, Swipe, SwipeItem, Button, Switch } from 'mint-ui'
@@ -12,9 +13,14 @@ import '../lib/mui/css/mui.min.css'
 import '../lib/mui/css/icons-extra.css'
 // 引入veu-preview
 import VuePreview from 'vue-preview'
+// 引入 Vue-resource
+import VueResource from 'vue-resource'
 // 引入Vuex
 import Vuex from 'vuex'
+// 使用Vuex
 Vue.use(Vuex)
+// 使用 VueResource
+Vue.use(VueResource)
 // 使用vue-preview
 Vue.use(VuePreview)
 Vue.component(Header.name, Header)
@@ -40,68 +46,7 @@ Vue.filter('dataFilter', function (time) {
   second < 10 && (second = '0' + second)
   return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
 })
-var car = JSON.parse(localStorage.getItem('car') || '[]')
-const store = new Vuex.Store({
-  state: {
-    car: car
-  },
-  mutations: {
-    seclecNum (state, obj) {
-      var flag = false
-      state.car.some(item => {
-        if (item.id === obj.id) {
-          item.count += parseInt(obj.count)
-          flag = true
-          return true
-        }
-      })
-      if (!flag) {
-        state.car.push(obj)
-      }
-      localStorage.setItem('car', JSON.stringify(state.car))
-    },
-    getCarCount (state, obj) {
-      state.car.some(item => {
-        if (item.id === obj.id) {
-          item.count = parseInt(obj.count)
-          return true
-        }
-      })
-      localStorage.setItem('car', JSON.stringify(state.car))
-    },
-    getSelectedChange (state, obj) {
-      state.car.some(item => {
-        if (item.id === obj.id) {
-          item.seclected = obj.seclected
-        }
-      })
-      localStorage.setItem('car', JSON.stringify(state.car))
-    }
-  },
-  getters: {
-    getAllCount (state) {
-      var c = 0
-      state.car.forEach(item => {
-        c += item.count
-      })
-      return c
-    },
-    getCount (state) {
-      var o = {}
-      state.car.forEach(item => {
-        o[item.id] = item.count
-      })
-      return o
-    },
-    getSelected (state) {
-      var o = {}
-      state.car.forEach(item => {
-        o[item.id] = item.seclected
-      })
-      return o
-    }
-  }
-})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
